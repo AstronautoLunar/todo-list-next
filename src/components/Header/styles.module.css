@@ -1,0 +1,16 @@
+header#header {
+    width: 100%;
+    height: 50px;
+    
+    background-color: white;
+
+    opacity: 0.8;
+}
+
+h1#titleData {
+    margin: 0;
+
+    color: aqua;
+
+    text-align: center;
+}

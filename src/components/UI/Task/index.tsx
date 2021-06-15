@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import ButtonOptionsTask from '../ButtonOptionsTask';
+
 import { useTasks } from '../../../contexts/TaskContext';
 
 import styles from './styles.module.css';
@@ -41,9 +43,7 @@ export default function Task({ index, descricao }) {
                 />
             }
             <span className={styles[styleTask]}>{ descricao }</span>
-            <button 
-                onClick={() => {removeTask(index);}}
-            >Apagar</button>
+            <ButtonOptionsTask/>
         </div>
     )
 }

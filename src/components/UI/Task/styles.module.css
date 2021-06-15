@@ -1,7 +1,7 @@
 div#task {
     height: 50px;
 
-    background-color: white;
+    background-color: var(--white);
 
     border-radius: 10px;
 

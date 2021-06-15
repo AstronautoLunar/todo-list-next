@@ -1,0 +1,22 @@
+div.buttonOptionsTask {
+    width: 16px;
+
+    margin-left: 5px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.buttonOptionsTask > i {
+    color: var(--aqua);
+
+    transition: all 0.2s;
+}
+
+div.buttonOptionsTask, div.option {
+    height: 16px;
+}
+
+/* div.option {
+} */

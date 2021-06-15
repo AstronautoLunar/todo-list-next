@@ -7,7 +7,7 @@ main#main {
     justify-content: flex-start;
     align-items: center;
 
-    background-image: linear-gradient(to bottom, white, aqua);
+    background-image: linear-gradient(to bottom, var(--white), var(--aqua));
 
     overflow-y: scroll;
 }

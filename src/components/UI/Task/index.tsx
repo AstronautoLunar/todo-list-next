@@ -4,8 +4,6 @@ import { useTasks } from '../../../contexts/TaskContext';
 
 import styles from './styles.module.css';
 
-// import { useTasks } from '../../../contexts/TaskContext';
-
 export default function Task({ index, descricao }) {
     let [ checkBoxSelected, setCheckBoxSelected ] = useState(false);
     let [ styleTask, setStyleTask ] = useState("noSelected")
@@ -21,13 +19,6 @@ export default function Task({ index, descricao }) {
             styleTask = "noSelected"
         )
     }
-
-    // useEffect(() => {
-    //     let array = [ "Pedro", "Paulo "];
-    //     console.log(array);
-    //     delete array[0];
-    //     console.log(array);
-    // }, [])
 
     return (
         <div 
@@ -49,10 +40,10 @@ export default function Task({ index, descricao }) {
                     onClick={() => selectedCheckBox()}
                 />
             }
-            <span className={styles[styleTask]}>{descricao}</span>
-            <button onClick={() => {
-                removeTask(index);
-            }}>Apagar</button>
+            <span className={styles[styleTask]}>{ descricao }</span>
+            <button 
+                onClick={() => {removeTask(index);}}
+            >Apagar</button>
         </div>
     )
 }

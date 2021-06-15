@@ -19,19 +19,13 @@ type TaskContextData = {
 const TaskContext = createContext({} as TaskContextData);
 
 export function TaskProvider({ children }) {
-    
     let [ currentTask, setCurrentTask ] = useState("");
     let [ currentTaskIndex, setCurrentTaskIndex ] = useState(0);
     let [ tasks, setTasks ] = useState([]);
 
-    function changeTask(task) {
-        setCurrentTask(currentTask = task.target.value);
+    function changeTask({ target }) {
+        setCurrentTask(currentTask = target.value);
     }
-
-    // useEffect(() => {
-    //     localStorage.clear();
-    //     console.log(localStorage.length)
-    // }, [])
 
     function incrementTask() {
         setCurrentTaskIndex(currentTaskIndex += 1);
@@ -41,27 +35,14 @@ export function TaskProvider({ children }) {
             tarefa: currentTask,
         });
         
-        setTasks(tasks = tasksAdicionadas);
+        setTasks(tasksAdicionadas);
 
-        // localStorage.setItem(String(currentTaskIndex), currentTask);
     }
 
     function removeTask(index) {
-        let tarefa = tasks[index-1].tarefa
-        tarefa.splice(index, 1);
+        let newTasks = tasks.filter(task => task.key !== index)
+        setTasks(newTasks);
     }
-
-    // Não consegui apagar a tarefa
-
-    console.log(tasks[0])
-
-    // useEffect(() => {
-    //     console.log(localStorage.key(1));
-    // }, [])
-
-    // function changeCheckBox() {
-        
-    // }
 
     return (
         <TaskContext.Provider value={{ 

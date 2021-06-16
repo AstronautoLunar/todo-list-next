@@ -7,12 +7,11 @@ import { useTasks } from '../../../contexts/TaskContext';
 import styles from './styles.module.css';
 
 export default function Task({ index, descricao }) {
-    let [ checkBoxSelected, setCheckBoxSelected ] = useState(false);
+    let [ selected, setSelected ] = useState(false);
     let [ styleTask, setStyleTask ] = useState("noSelected")
-    let { removeTask } = useTasks();
     
     function selectedCheckBox() {
-        setCheckBoxSelected(checkBoxSelected = !checkBoxSelected);
+        setSelected(!selected);
         setStyleTask(
             styleTask === "noSelected"
             ?
@@ -28,7 +27,7 @@ export default function Task({ index, descricao }) {
             className={styles[styleTask]}
         >
             {
-                checkBoxSelected
+                selected
                 ?
                 <img 
                     className={styles.image} 
@@ -42,8 +41,23 @@ export default function Task({ index, descricao }) {
                     onClick={() => selectedCheckBox()}
                 />
             }
-            <span className={styles[styleTask]}>{ descricao }</span>
-            <ButtonOptionsTask/>
+            <span 
+                className={styles[styleTask]}
+                style={
+                    selected
+                    ?
+                    {
+                        textDecoration: 'line-through',
+                    }
+                    :
+                    {
+                        textDecoration: 'none',
+                    }
+                }
+            >
+                    { descricao }
+            </span>
+            <ButtonOptionsTask index={index}/>
         </div>
     )
 }

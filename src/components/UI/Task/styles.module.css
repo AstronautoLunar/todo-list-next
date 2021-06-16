@@ -13,13 +13,13 @@ div#task {
     padding: 10px;
 }
 
-div.noSelected, span.noSelected {
+.noSelected {
     opacity: 1;
 }
 
-div.selected, span.selected {
+.selected:not(i) {
     opacity: 0.5;
-    text-decoration: line-through;
+
     transition: all 0.2s;
     animation-name: crescerEncolher;
     animation-duration: 0.2s;

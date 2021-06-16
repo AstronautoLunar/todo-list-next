@@ -10,12 +10,42 @@ div.buttonOptionsTask {
 
 div.buttonOptionsTask > i {
     color: var(--aqua);
+}
+
+div.buttonOptionsTask, 
+div.optionOpen, 
+div.optionClose 
+{
+    height: 16px;
+
+}
+
+div.buttonOptionsTask > i, div.optionOpen, div.optionClose {
+    transition: all 0.5s;
+}
+
+div.optionOpen {
+    width: auto;
+
+    padding-left: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+i#trash {
+    color: red;
 
     transition: all 0.2s;
 }
 
-div.buttonOptionsTask, div.option {
-    height: 16px;
+i#trash:active {
+    filter: brightness(80%);
+}
+
+div.optionClose {
+    width: 0px;
 }
 
 /* div.option {

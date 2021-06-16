@@ -1,8 +1,16 @@
 import { useState } from 'react';
 
+import { useTasks } from '../../../contexts/TaskContext';
+
 import styles from './styles.module.css';
 
-export default function ButtonOptionsTask() {
+type ButtonOptionsTaskData = {
+    index: number;
+}
+
+export default function ButtonOptionsTask({ index }: ButtonOptionsTaskData) {
+    let { removeTask } = useTasks();
+
     let [ option, setOption ] = useState(false);
 
     function handleOption() {
@@ -35,19 +43,18 @@ export default function ButtonOptionsTask() {
                 option
                 ?
                 <div
-                    className={styles.option}
-                    // style={
-
-                    // }
+                    className={styles.optionOpen}
                 >
-
+                    <i 
+                        id={styles.trash} 
+                        className="fas fa-trash"
+                        onClick={() => removeTask(index)}
+                    ></i>
                 </div>
                 :
                 <div
-                    className={styles.option}
-                >
-
-                </div>
+                    className={styles.optionClose}
+                />
             }
         </>
     )

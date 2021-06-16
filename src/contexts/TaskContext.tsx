@@ -28,15 +28,18 @@ export function TaskProvider({ children }) {
     }
 
     function incrementTask() {
-        setCurrentTaskIndex(currentTaskIndex += 1);
+        if(currentTask === "") {
+            alert("Tarefa vazia")
+        } else {
+            setCurrentTaskIndex(currentTaskIndex += 1);
+            
+            let tasksAdicionadas = tasks.concat({
+                key: currentTaskIndex,
+                tarefa: currentTask,
+            });
 
-        let tasksAdicionadas = tasks.concat({
-            key: currentTaskIndex,
-            tarefa: currentTask,
-        });
-        
-        setTasks(tasksAdicionadas);
-
+            setTasks(tasksAdicionadas);
+        }
     }
 
     function removeTask(index) {

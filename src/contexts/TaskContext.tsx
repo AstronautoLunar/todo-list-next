@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 
 type Tasks = {
     key: number;
@@ -13,34 +13,39 @@ type TaskContextData = {
     setCurrentTaskIndex: any;
     changeTask: (task) => void;
     incrementTask: () => void;
+    removeTask: (index: number) => void
 }
 
 const TaskContext = createContext({} as TaskContextData);
 
 export function TaskProvider({ children }) {
-    
     let [ currentTask, setCurrentTask ] = useState("");
     let [ currentTaskIndex, setCurrentTaskIndex ] = useState(0);
     let [ tasks, setTasks ] = useState([]);
 
-    function changeTask(task) {
-        setCurrentTask(currentTask = task.target.value);
+    function changeTask({ target }) {
+        setCurrentTask(currentTask = target.value);
     }
-    
+
     function incrementTask() {
-        setCurrentTaskIndex(currentTaskIndex += 1);
-        
-        let tasksAdicionadas = tasks.concat({
-            key: currentTaskIndex,
-            tarefa: currentTask,
-        });
+        if(currentTask === "") {
+            alert("Tarefa vazia")
+        } else {
+            setCurrentTaskIndex(currentTaskIndex += 1);
+            
+            let tasksAdicionadas = tasks.concat({
+                key: currentTaskIndex,
+                tarefa: currentTask,
+            });
 
-        setTasks(tasks = tasksAdicionadas);
+            setTasks(tasksAdicionadas);
+        }
     }
 
-    // function changeCheckBox() {
-        
-    // }
+    function removeTask(index) {
+        let newTasks = tasks.filter(task => task.key !== index)
+        setTasks(newTasks);
+    }
 
     return (
         <TaskContext.Provider value={{ 
@@ -51,6 +56,7 @@ export function TaskProvider({ children }) {
             setCurrentTaskIndex,
             changeTask, 
             incrementTask,
+            removeTask
         }}>
             { children }
         </TaskContext.Provider>

@@ -1,15 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+
+import ButtonOptionsTask from '../ButtonOptionsTask';
+
+import { useTasks } from '../../../contexts/TaskContext';
 
 import styles from './styles.module.css';
 
-// import { useTasks } from '../../../contexts/TaskContext';
-
 export default function Task({ index, descricao }) {
-    let [ checkBoxSelected, setCheckBoxSelected ] = useState(false);
+    let [ selected, setSelected ] = useState(false);
     let [ styleTask, setStyleTask ] = useState("noSelected")
     
     function selectedCheckBox() {
-        setCheckBoxSelected(checkBoxSelected = !checkBoxSelected);
+        setSelected(!selected);
         setStyleTask(
             styleTask === "noSelected"
             ?
@@ -19,33 +21,43 @@ export default function Task({ index, descricao }) {
         )
     }
 
-    useEffect(() => {
-        let array = [ "Pedro", "Paulo "];
-        console.log(array);
-        delete array[0];
-        console.log(array);
-    }, [])
-
     return (
         <div 
             id={styles.task}
             className={styles[styleTask]}
-            onClick={() => selectedCheckBox()}
         >
             {
-                checkBoxSelected
+                selected
                 ?
                 <img 
                     className={styles.image} 
                     src="/checkboxSelectedIcon.svg" alt="Checkbox selected"
+                    onClick={() => selectedCheckBox()}
                 />
                 :
                 <img
                     className={styles.image} 
                     src="/checkboxNoSelectedIcon.svg" alt="Checkbox no selected"
+                    onClick={() => selectedCheckBox()}
                 />
             }
-            <span className={styles[styleTask]}>{descricao}</span>
+            <span 
+                className={styles[styleTask]}
+                style={
+                    selected
+                    ?
+                    {
+                        textDecoration: 'line-through',
+                    }
+                    :
+                    {
+                        textDecoration: 'none',
+                    }
+                }
+            >
+                    { descricao }
+            </span>
+            <ButtonOptionsTask index={index}/>
         </div>
     )
 }

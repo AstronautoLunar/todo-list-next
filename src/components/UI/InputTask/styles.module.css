@@ -2,7 +2,7 @@ div#areaInput {
     width: 80%;
     height: 40px;
 
-    background-color: white;
+    background-color: var(--white);
 
     border-radius: 20px;
 
@@ -30,7 +30,7 @@ input#input {
 }
 
 input#input::placeholder {
-    color: aqua;
+    color: var(--aqua);
 
     opacity: 0.5;
 }

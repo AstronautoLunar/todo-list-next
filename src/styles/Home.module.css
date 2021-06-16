@@ -11,3 +11,51 @@ main#main {
 
     overflow-y: scroll;
 }
+
+@media screen and (max-height: 640px) {
+    main#main {
+        height: 640px;
+    }
+}
+
+@media screen and (max-height: 667px) {
+    main#main {
+        height: 667px
+    }
+}
+
+@media screen and (max-height: 768px) {
+    main#main {
+        height: 768px;
+    }
+}
+
+@media screen and (max-height: 780px) {
+    main#main {
+        height: 780px
+    }
+}
+
+@media screen and (max-height: 800px) {
+    main#main {
+        height: 800px;
+    }
+}
+
+@media screen and (max-height: 896px) {
+    main#main {
+        height: 896px
+    }
+}
+
+@media screen and (max-height: 1080px) {
+    main#main {
+        height: 1080px;
+    }
+}
+
+@media screen and (max-height: 1100px) {
+    main#main {
+        height: 572px;
+    }
+}

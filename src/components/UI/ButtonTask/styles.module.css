@@ -17,10 +17,15 @@ div#button {
     top: -5px;
     left: 50%;
     transform: translate(-50%, -50%);
+}
 
+div#button, div#button > img {
     transition: all 0.2s;
 }
 
 div#button:active {
     background-color: var(--aqua-background);
+    
+    width: 60px;
+    height: 60px;
 }
